@@ -20,6 +20,9 @@
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
 
+# Time complexity = O(n)
+# Space: O(n)
+
 
 def climnStairs(n):
     store = {}
