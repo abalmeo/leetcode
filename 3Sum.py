@@ -23,12 +23,13 @@ class Solution(object):
         length = len(nums)
         # length - 2 because there are left and right pointers when looping through
         for i in range(length-2):
+            # checking for duplicate 0s
             if i > 0 and nums[i] == nums[i-1]:
                 continue
             # left and right pointers
             l = i+1
             r = length-1
-
+            # making sure not looking at the same inde
             while l < r:
                # checking total = 0
                 total = nums[i] + nums[l] + nums[r]
@@ -38,9 +39,10 @@ class Solution(object):
                     r = r-1
                 else:
                     res.append([nums[i], nums[l], nums[r]])
-                    # checking if
+                    # checking if indexes are not the same for l and r and if duplicates are used for left and right pointer
                     while l < r and nums[l] == nums[l+1]:
                         l = l+1
+                    # checking if indexes are not the same for l and r and if duplicates are used for left and right pointer
                     while l < r and nums[r] == nums[r-1]:
                         r = r-1
                     l = l+1
