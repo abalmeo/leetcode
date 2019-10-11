@@ -19,7 +19,7 @@ class ListNode(object):
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
-        l3 = ListNode(0)
+        head = l3 = ListNode(0)
         carry = 0
 
         # checking if there is a value for linked lists and cary
@@ -34,3 +34,10 @@ class Solution(object):
             # get ones position and asign carry value to tenths place
             l3.val = carry % 10
             carry = carry // 10
+
+            # create new node to point to
+            if l1 or l2 or carry:
+                l3.next = ListNode(0)
+                l3 = l3.next
+
+        return head
