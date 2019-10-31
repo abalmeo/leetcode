@@ -20,17 +20,34 @@
 # Output: 3
 
 
-class Solution(object):
-    def numIslands(self, graph):
-        if not graph:
-            return 0
-        row = len(graph)
-        col = len(graph[0])
-        count = 0
-        # Double for loop to check if position is 1
-        for i in range(row):
-            for j in range(col):
-                if graph[i][j] == 1:
-                    # call helper function
-                    dfs(graph, row, col, i, j)
-                    count += 1
+def numIslands(graph):
+    if not graph:
+        return 0
+    row = len(graph)
+    col = len(graph[0])
+    count = 0
+    # Double for loop to check if position is 1
+    for i in range(row):
+        for j in range(col):
+            if graph[i][j] == 1:
+                # call helper function
+                dfs(graph, row, col, i, j)
+                count += 1
+
+
+def dfs(graph, row, col, x, y):
+    # Check if position = 0, then return
+    if graph[x][y] == 0:
+        return
+    # If visit position and 1 then change it to to 0 to show you've visited
+    graph[x][y] = 0
+
+    # If x is not the first row, then call function recursively on row before(above)
+    if x != 0:
+        dfs(graph, row, col, x - 1, y)
+    if x != row - 1:
+        dfs(graph, row, col, x + 1, y)
+    if y != 0:
+        dfs(graph, row, col, x, y - 1)
+    if y != col - 1:
+        dfs(graph, row, col, x, y + 1)
